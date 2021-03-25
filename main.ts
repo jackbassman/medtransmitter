@@ -37,9 +37,17 @@ radio.onReceivedNumber(function (receivedNumber) {
             basic.pause(2000)
         }
     }
+    if (input.logoIsPressed()) {
+        if (receivedNumber == 5) {
+            basic.showString("CLEAR")
+            music.stopAllSounds()
+        }
+    }
 })
 input.onButtonPressed(Button.A, function () {
     radio.sendNumber(0)
+    music.setBuiltInSpeakerEnabled(true)
+    soundExpression.slide.play()
     basic.showString("HELP")
     basic.pause(5000)
     basic.clearScreen()
@@ -57,7 +65,7 @@ input.onGesture(Gesture.TiltLeft, function () {
     basic.clearScreen()
 })
 input.onSound(DetectedSound.Loud, function () {
-    input.setSoundThreshold(SoundThreshold.Loud, 128)
+    input.setSoundThreshold(SoundThreshold.Loud, 202)
     basic.showString("LOUD")
     radio.sendNumber(4)
     music.setBuiltInSpeakerEnabled(true)
@@ -68,6 +76,8 @@ input.onSound(DetectedSound.Loud, function () {
 })
 input.onButtonPressed(Button.B, function () {
     radio.sendNumber(1)
+    music.setBuiltInSpeakerEnabled(true)
+    soundExpression.happy.play()
     basic.showString("DINNER")
     basic.pause(5000)
     basic.clearScreen()
@@ -76,7 +86,7 @@ input.onGesture(Gesture.Shake, function () {
     if (true) {
         radio.sendNumber(3)
         music.setBuiltInSpeakerEnabled(true)
-        input.setAccelerometerRange(AcceleratorRange.TwoG)
+        input.setAccelerometerRange(AcceleratorRange.FourG)
         music.playMelody("C5 A B G A F G E ", 120)
         basic.showNumber(input.acceleration(Dimension.Strength))
         basic.pause(2000)
@@ -90,8 +100,8 @@ input.onGesture(Gesture.TiltRight, function () {
 })
 input.onLogoEvent(TouchButtonEvent.Touched, function () {
     radio.sendNumber(5)
-    music.setBuiltInSpeakerEnabled(true)
     soundExpression.twinkle.play()
+    music.setBuiltInSpeakerEnabled(false)
 })
 radio.setGroup(1)
 radio.setTransmitPower(7)
