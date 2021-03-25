@@ -41,7 +41,8 @@ input.onButtonPressed(Button.A, function () {
     radio.sendNumber(0)
     soundExpression.sad.play()
     basic.showString("HELP")
-    basic.pause(1000)
+    music.playTone(262, music.beat(BeatFraction.Quarter))
+    basic.pause(500)
     basic.clearScreen()
 })
 input.onGesture(Gesture.LogoUp, function () {
