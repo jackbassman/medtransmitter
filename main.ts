@@ -72,7 +72,7 @@ input.onButtonPressed(Button.B, function () {
 })
 input.onGesture(Gesture.Shake, function () {
     if (true) {
-        music.setBuiltInSpeakerEnabled(false)
+        music.setBuiltInSpeakerEnabled(true)
         input.setAccelerometerRange(AcceleratorRange.TwoG)
         radio.sendNumber(3)
         basic.showNumber(input.acceleration(Dimension.Strength))
