@@ -42,8 +42,8 @@ radio.onReceivedNumber(function (receivedNumber) {
             basic.showString("CLEAR")
             for (let index = 0; index < 5; index++) {
                 soundExpression.yawn.play()
-                music.stopAllSounds()
             }
+            music.stopAllSounds()
         }
     }
 })
