@@ -27,14 +27,15 @@ radio.onReceivedNumber(function (receivedNumber) {
         basic.clearScreen()
     }
     if (receivedNumber == 4) {
-        basic.showString("LOUD")
-        music.setBuiltInSpeakerEnabled(true)
-        music.setVolume(255)
-        for (let index = 0; index < 3; index++) {
-            music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.Once)
+        if (true) {
+            basic.showString("LOUD")
+            music.setBuiltInSpeakerEnabled(true)
+            music.setVolume(255)
+            for (let index = 0; index < 1; index++) {
+                music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.Once)
+            }
+            basic.pause(2000)
         }
-        basic.pause(2000)
-        basic.clearScreen()
     }
 })
 input.onButtonPressed(Button.A, function () {
@@ -56,7 +57,7 @@ input.onGesture(Gesture.TiltLeft, function () {
     basic.clearScreen()
 })
 input.onSound(DetectedSound.Loud, function () {
-    input.setSoundThreshold(SoundThreshold.Loud, 160)
+    input.setSoundThreshold(SoundThreshold.Loud, 128)
     radio.sendNumber(4)
     music.setBuiltInSpeakerEnabled(true)
     music.setVolume(255)
@@ -87,6 +88,8 @@ input.onGesture(Gesture.TiltRight, function () {
     basic.clearScreen()
 })
 input.onLogoEvent(TouchButtonEvent.Touched, function () {
+    radio.sendNumber(5)
+    music.setBuiltInSpeakerEnabled(true)
     soundExpression.twinkle.play()
 })
 radio.setGroup(1)
