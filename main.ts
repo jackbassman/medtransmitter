@@ -44,10 +44,11 @@ input.onButtonPressed(Button.B, function () {
 })
 input.onGesture(Gesture.Shake, function () {
     if (true) {
-        radio.sendNumber(input.acceleration(Dimension.Strength))
+        input.setAccelerometerRange(AcceleratorRange.FourG)
+        radio.sendNumber(3)
         basic.showNumber(input.acceleration(Dimension.Strength))
-        accel = input.acceleration(Dimension.Strength)
-        basic.pause(500)
+        music.playMelody("C5 A B G A F G E ", 120)
+        basic.pause(5000)
     }
 })
 input.onGesture(Gesture.TiltRight, function () {
@@ -56,7 +57,6 @@ input.onGesture(Gesture.TiltRight, function () {
     basic.pause(2000)
     basic.clearScreen()
 })
-let accel = 0
 radio.setTransmitPower(7)
 basic.forever(function () {
 	
