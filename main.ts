@@ -59,7 +59,7 @@ input.onSound(DetectedSound.Loud, function () {
     radio.sendNumber(4)
     music.setBuiltInSpeakerEnabled(true)
     music.setVolume(255)
-    soundExpression.sad.play()
+    input.setSoundThreshold(SoundThreshold.Loud, 130)
 })
 input.onButtonPressed(Button.B, function () {
     radio.sendNumber(1)
