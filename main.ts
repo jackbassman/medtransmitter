@@ -86,6 +86,9 @@ input.onGesture(Gesture.TiltRight, function () {
     basic.pause(2000)
     basic.clearScreen()
 })
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    soundExpression.twinkle.play()
+})
 radio.setGroup(1)
 radio.setTransmitPower(7)
 basic.forever(function () {
