@@ -56,10 +56,13 @@ input.onGesture(Gesture.TiltLeft, function () {
     basic.clearScreen()
 })
 input.onSound(DetectedSound.Loud, function () {
+    input.setSoundThreshold(SoundThreshold.Loud, 160)
     radio.sendNumber(4)
     music.setBuiltInSpeakerEnabled(true)
     music.setVolume(255)
-    input.setSoundThreshold(SoundThreshold.Loud, 130)
+    music.ringTone(523)
+    basic.pause(2000)
+    music.stopAllSounds()
 })
 input.onButtonPressed(Button.B, function () {
     radio.sendNumber(1)
