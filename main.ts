@@ -58,6 +58,7 @@ input.onGesture(Gesture.TiltLeft, function () {
 })
 input.onSound(DetectedSound.Loud, function () {
     input.setSoundThreshold(SoundThreshold.Loud, 128)
+    basic.showString("LOUD")
     radio.sendNumber(4)
     music.setBuiltInSpeakerEnabled(true)
     music.setVolume(255)
@@ -73,11 +74,11 @@ input.onButtonPressed(Button.B, function () {
 })
 input.onGesture(Gesture.Shake, function () {
     if (true) {
+        radio.sendNumber(3)
         music.setBuiltInSpeakerEnabled(true)
         input.setAccelerometerRange(AcceleratorRange.TwoG)
-        radio.sendNumber(3)
-        basic.showNumber(input.acceleration(Dimension.Strength))
         music.playMelody("C5 A B G A F G E ", 120)
+        basic.showNumber(input.acceleration(Dimension.Strength))
         basic.pause(2000)
     }
 })
