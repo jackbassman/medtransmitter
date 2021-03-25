@@ -1,11 +1,11 @@
 radio.onReceivedNumber(function (receivedNumber) {
     if (receivedNumber == 0) {
-        basic.showIcon(IconNames.Happy)
+        basic.showString("HELP")
         basic.pause(2000)
         basic.clearScreen()
     }
     if (receivedNumber == 1) {
-        basic.showIcon(IconNames.Sad)
+        basic.showString("DINNER")
         basic.pause(2000)
         basic.clearScreen()
     }
@@ -14,6 +14,25 @@ radio.onReceivedNumber(function (receivedNumber) {
         music.setBuiltInSpeakerEnabled(true)
         music.setVolume(255)
         soundExpression.giggle.play()
+        basic.pause(2000)
+        basic.clearScreen()
+    }
+    if (receivedNumber == 3) {
+        basic.showString("SHAKE")
+        music.playMelody("C5 A B G A F G E ", 120)
+        music.setBuiltInSpeakerEnabled(true)
+        music.setVolume(255)
+        soundExpression.giggle.play()
+        basic.pause(2000)
+        basic.clearScreen()
+    }
+    if (receivedNumber == 4) {
+        basic.showString("LOUD")
+        music.setBuiltInSpeakerEnabled(true)
+        music.setVolume(255)
+        for (let index = 0; index < 3; index++) {
+            music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.Once)
+        }
         basic.pause(2000)
         basic.clearScreen()
     }
@@ -32,9 +51,15 @@ input.onGesture(Gesture.LogoUp, function () {
 })
 input.onGesture(Gesture.TiltLeft, function () {
     radio.sendNumber(2)
-    basic.showIcon(IconNames.Heart)
+    basic.showString("LEFT")
     basic.pause(2000)
     basic.clearScreen()
+})
+input.onSound(DetectedSound.Loud, function () {
+    radio.sendNumber(4)
+    music.setBuiltInSpeakerEnabled(true)
+    music.setVolume(255)
+    soundExpression.sad.play()
 })
 input.onButtonPressed(Button.B, function () {
     radio.sendNumber(1)
@@ -44,20 +69,25 @@ input.onButtonPressed(Button.B, function () {
 })
 input.onGesture(Gesture.Shake, function () {
     if (true) {
-        input.setAccelerometerRange(AcceleratorRange.FourG)
+        music.setBuiltInSpeakerEnabled(false)
+        input.setAccelerometerRange(AcceleratorRange.TwoG)
         radio.sendNumber(3)
         basic.showNumber(input.acceleration(Dimension.Strength))
         music.playMelody("C5 A B G A F G E ", 120)
-        basic.pause(5000)
+        basic.pause(2000)
     }
 })
 input.onGesture(Gesture.TiltRight, function () {
     radio.sendNumber(2)
-    basic.showIcon(IconNames.Heart)
+    basic.showString("RIGHT")
     basic.pause(2000)
     basic.clearScreen()
 })
+radio.setGroup(1)
 radio.setTransmitPower(7)
 basic.forever(function () {
+	
+})
+control.inBackground(function () {
 	
 })
