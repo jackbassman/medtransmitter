@@ -39,8 +39,9 @@ radio.onReceivedNumber(function (receivedNumber) {
 })
 input.onButtonPressed(Button.A, function () {
     radio.sendNumber(0)
+    soundExpression.sad.play()
     basic.showString("HELP")
-    basic.pause(5000)
+    basic.pause(1000)
     basic.clearScreen()
 })
 input.onGesture(Gesture.LogoUp, function () {
@@ -67,8 +68,9 @@ input.onSound(DetectedSound.Loud, function () {
 })
 input.onButtonPressed(Button.B, function () {
     radio.sendNumber(1)
+    soundExpression.twinkle.play()
     basic.showString("DINNER")
-    basic.pause(5000)
+    basic.pause(1000)
     basic.clearScreen()
 })
 input.onGesture(Gesture.Shake, function () {
