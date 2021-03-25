@@ -86,7 +86,7 @@ input.onGesture(Gesture.TiltRight, function () {
     basic.pause(2000)
     basic.clearScreen()
 })
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+input.onLogoEvent(TouchButtonEvent.Touched, function () {
     soundExpression.twinkle.play()
 })
 radio.setGroup(1)
