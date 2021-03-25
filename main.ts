@@ -39,9 +39,11 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
     if (input.logoIsPressed()) {
         if (receivedNumber == 5) {
-            soundExpression.yawn.play()
             basic.showString("CLEAR")
-            music.stopAllSounds()
+            for (let index = 0; index < 5; index++) {
+                soundExpression.yawn.play()
+                music.stopAllSounds()
+            }
         }
     }
 })
@@ -50,6 +52,7 @@ input.onButtonPressed(Button.A, function () {
     music.setBuiltInSpeakerEnabled(true)
     soundExpression.slide.play()
     basic.showString("HELP")
+    soundExpression.slide.play()
     basic.pause(5000)
     basic.clearScreen()
 })
