@@ -20,7 +20,7 @@ radio.onReceivedNumber(function (receivedNumber) {
 })
 input.onButtonPressed(Button.A, function () {
     radio.sendNumber(0)
-    basic.showIcon(IconNames.Happy)
+    basic.showString("HELP")
     basic.pause(5000)
     basic.clearScreen()
 })
@@ -38,9 +38,17 @@ input.onGesture(Gesture.TiltLeft, function () {
 })
 input.onButtonPressed(Button.B, function () {
     radio.sendNumber(1)
-    basic.showIcon(IconNames.Sad)
+    basic.showString("DINNER")
     basic.pause(5000)
     basic.clearScreen()
+})
+input.onGesture(Gesture.Shake, function () {
+    if (true) {
+        radio.sendNumber(input.acceleration(Dimension.Strength))
+        basic.showNumber(input.acceleration(Dimension.Strength))
+        accel = input.acceleration(Dimension.Strength)
+        basic.pause(500)
+    }
 })
 input.onGesture(Gesture.TiltRight, function () {
     radio.sendNumber(2)
@@ -48,6 +56,7 @@ input.onGesture(Gesture.TiltRight, function () {
     basic.pause(2000)
     basic.clearScreen()
 })
+let accel = 0
 radio.setTransmitPower(7)
 basic.forever(function () {
 	
