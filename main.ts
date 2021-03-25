@@ -39,6 +39,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
     if (input.logoIsPressed()) {
         if (receivedNumber == 5) {
+            soundExpression.yawn.play()
             basic.showString("CLEAR")
             music.stopAllSounds()
         }
@@ -65,7 +66,7 @@ input.onGesture(Gesture.TiltLeft, function () {
     basic.clearScreen()
 })
 input.onSound(DetectedSound.Loud, function () {
-    input.setSoundThreshold(SoundThreshold.Loud, 202)
+    input.setSoundThreshold(SoundThreshold.Loud, 228)
     basic.showString("LOUD")
     radio.sendNumber(4)
     music.setBuiltInSpeakerEnabled(true)
@@ -101,6 +102,7 @@ input.onGesture(Gesture.TiltRight, function () {
 input.onLogoEvent(TouchButtonEvent.Touched, function () {
     radio.sendNumber(5)
     soundExpression.twinkle.play()
+    music.stopAllSounds()
     music.setBuiltInSpeakerEnabled(false)
 })
 radio.setGroup(1)
