@@ -31,7 +31,7 @@ radio.onReceivedNumber(function (receivedNumber) {
         music.setBuiltInSpeakerEnabled(true)
         music.setVolume(255)
         for (let index = 0; index < 3; index++) {
-            music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.Once)
+            music.startMelody(music.builtInMelody(Melodies.Entertainer), MelodyOptions.Once)
         }
         basic.pause(2000)
         basic.clearScreen()
@@ -48,7 +48,7 @@ input.onButtonPressed(Button.A, function () {
 input.onGesture(Gesture.LogoUp, function () {
     radio.sendNumber(2)
     basic.showIcon(IconNames.Heart)
-    basic.pause(2000)
+    basic.pause(1000)
     basic.clearScreen()
 })
 input.onGesture(Gesture.TiltLeft, function () {
@@ -58,14 +58,16 @@ input.onGesture(Gesture.TiltLeft, function () {
     basic.clearScreen()
 })
 input.onSound(DetectedSound.Loud, function () {
+    input.setSoundThreshold(SoundThreshold.Loud, 128)
     radio.sendNumber(4)
-    input.setSoundThreshold(SoundThreshold.Loud, 204)
     led.enable(true)
     led.setBrightness(128)
     led.plotBarGraph(
     input.soundLevel(),
     255
     )
+    basic.pause(100)
+    basic.clearScreen()
 })
 input.onButtonPressed(Button.B, function () {
     radio.sendNumber(1)
@@ -75,12 +77,11 @@ input.onButtonPressed(Button.B, function () {
     basic.clearScreen()
 })
 input.onGesture(Gesture.Shake, function () {
+    input.setAccelerometerRange(AcceleratorRange.FourG)
     if (true) {
         music.setBuiltInSpeakerEnabled(false)
-        input.setAccelerometerRange(AcceleratorRange.TwoG)
         radio.sendNumber(3)
         basic.showNumber(input.acceleration(Dimension.Strength))
-        music.playMelody("C5 A B G A F G E ", 120)
         basic.pause(2000)
     }
 })
@@ -91,7 +92,6 @@ input.onGesture(Gesture.TiltRight, function () {
     basic.clearScreen()
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    soundExpression.yawn.play()
     music.stopAllSounds()
 })
 radio.setGroup(1)
